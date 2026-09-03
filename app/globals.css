@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9FE;
+  --foreground: #000416;
+  --primary: #7C4DFF;
+  --secondary: #2ED8E8;
+  --dark-blue: #071F6B;
+  --card-bg: #FCFCFE;
+  --brand-gradient: linear-gradient(90deg, #9100ff 0%, #00cfe8 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-dancing: "Dancing Script", cursive;
+  --color-brand-purple: #7c4dff;
+  --color-brand-cyan: #2ed8e8;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-dark-blue: var(--dark-blue);
+  --color-card-bg: var(--card-bg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-nunito: 'Nunito', sans-serif;
+  --font-sans: var(--font-nunito);
+}
+
+.gradient-text {
+    display: inline-block;
+    background-image: var(--brand-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-background {
+    background-image: var(--brand-gradient);
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #FAF9FE;
+    --foreground: #000416;
+  }
+}
+body {
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-family: var(--font-nunito);
+}
+}

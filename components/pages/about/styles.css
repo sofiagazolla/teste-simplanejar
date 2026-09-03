@@ -1,0 +1,16 @@
+
+
+.swiper {
+  width: 100%;
+  height: 294px;
+}
+
+.swiper-slide {
+    max-width: 207px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #7C4DFF;
+}
+
+
