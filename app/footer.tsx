@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import { ImageData, StyledText } from ".";
+import { ImageData, StyledText } from "@/components/pages/contact";
 import Link from "next/link";
 
 interface PreFooterData {
