@@ -193,17 +193,15 @@ export default function RetirementSimulator() {
             ))}
           </div>
 
-          <button >
-            <div className="pt-4 sm:hidden">
+          <div className="pt-4 sm:hidden flex justify-center w-full">
             <a
-              href="/simulador"
-              className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#7343E0] text-white font-extrabold py-3.5 px-6 rounded-xl shadow-md transition-all text-base"
+                href="/simulador/de-renda-na-aposentadoria/form"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-[#7343E0] text-white font-extrabold py-3.5 px-6 rounded-xl shadow-md transition-all text-base text-center"
             >
-              Acessar o simulador
-              <IconArrow />
+                Acessar o simulador
+                <IconArrow />
             </a>
-          </div>
-          </button>
+            </div>
         </div>
       </section>
     </div>

@@ -171,7 +171,7 @@ const contactBodyMockData: ContactBodyData = {
         },
         button: {
             text: "Conheça o livro",
-            link: "AINDA NÃO TEM",
+            link: "/o-livro",
             icon: FiBookOpen,
             arrow: IoMdArrowForward
         }

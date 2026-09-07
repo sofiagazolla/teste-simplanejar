@@ -88,7 +88,7 @@ export default function Founder() {
             {/*Botões*/}
             <div className="flex flex-col md:flex-row gap-4 mt-8 w-full">
               {/*Botão principal, deixei sem nada, por enquanto*/}
-              <a href="sobre#simone-costa" className="flex items-center justify-center gap-2 bg-[#7C4DFF] hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 text-white font-medium py-3 px-6 rounded-lg shadow-md w-full md:w-auto">
+              <a href="/sobre#a-idealizadora" className="flex items-center justify-center gap-2 bg-[#7C4DFF] hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 text-white font-medium py-3 px-6 rounded-lg shadow-md w-full md:w-auto">
                 Conheça minha trajetória
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />

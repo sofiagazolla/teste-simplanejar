@@ -78,76 +78,78 @@ function renderHighlightedText(
 
 export function AboutResult() {
     return (
-        <section className="w-full max-w-[1440px] mx-auto mt-12">
-            <div>
-                <div className="text-primary bg-[#E1D6FE] w-fit py-[6px] px-[12px] rounded-[10px] font-bold text-sm mb-4">
-                    {renderHighlightedText(data.h2)}
-                </div>
-                
-                <h2 className="font-bold text-3xl sm:text-4xl text-[#000416]">
-                    {renderHighlightedText(data.h2)}
-                </h2>
-                
-                <div className="w-[40px] h-[5px] my-5 bg-gradient-to-r from-primary to-secondary rounded-[10px]" />
-                
-                <p className="w-full lg:w-1/2 text-base sm:text-lg mb-2 text-foreground/80 leading-relaxed">
-                    {renderHighlightedText(data.p)}
-                </p>
-                
-                <p className="font-bold mb-8 sm:mb-10 text-base sm:text-lg text-[#000416]">
-                    {data.pbold}
-                </p>
-            </div>
-
-            <div className="space-y-8">
-                {/* Container da lista de cards centralizado */}
-                <div className="w-full max-w-[1440px] mx-auto bg-card-bg shadow-[0_2px_8px_0_rgba(0,0,0,0.15)] rounded-[10px] p-3 sm:p-5">
-                    {data.cards.map((card, index) => {
-                        const colour = card.colour;
-                        return (
-                            <div 
-                                key={index} 
-                                className="bg-white shadow-[0_2px_8px_0_rgba(0,0,0,0.08)] rounded-[10px] flex flex-row my-4 items-center justify-between min-h-[90px] md:h-32 border border-slate-100 overflow-hidden"
-                            >
-                                <div 
-                                    style={{ background: colour }} 
-                                    className="text-white w-[25%] sm:w-[15%] md:w-[12%] h-full flex items-center text-center justify-center text-lg sm:text-2xl lg:text-3xl shrink-0"
-                                >
-                                    <p className="font-bold">{card.number}</p>
-                                </div>
-                                
-                                <div className="p-3 sm:p-5 flex flex-row justify-between items-center w-[75%] sm:w-[85%] md:w-[88%] h-full gap-2 sm:gap-4">
-                                    <img src={card.icon} alt="" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 object-contain" />
-                                    
-                                    <p style={{ color: colour }} className="w-[20%] sm:w-[18%] font-bold text-sm sm:text-lg md:text-xl shrink-0">
-                                        {card.classification}
-                                    </p>
-                                    
-                                    <div style={{ background: colour }} className="h-12 md:h-16 w-[2px] shrink-0" />
-                                    
-                                    <p className="text-[#000416] w-[60%] sm:w-[65%] text-xs sm:text-sm md:text-base leading-snug">
-                                        {card.p}
-                                    </p>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* Banner inferior centralizado */}
-                <div className="w-full max-w-[1440px] mx-auto bg-card-bg shadow-[0_2px_8px_0_rgba(0,0,0,0.15)] rounded-[10px] flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 gap-4">
-                    <div className="flex flex-row items-center gap-4 sm:gap-6">
-                        <div className="bg-primary rounded-full p-3 sm:p-4 shrink-0">
-                            <GoLightBulb className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" />
-                        </div>
-                        <div className="text-sm sm:text-base md:text-lg text-left">
-                            <p>{renderHighlightedText(data.lowp1)}</p>
-                            <p>{renderHighlightedText(data.lowp2)}</p>
-                        </div>
+        <div className="w-full px-4 py-3 sm:px-6 lg:px-8 lg:py-10 xl:px-10">
+            <section className="w-full max-w-[1440px] mx-auto mt-12">
+                <div>
+                    <div className="text-primary bg-[#E1D6FE] w-fit py-[6px] px-[12px] rounded-[10px] font-bold text-sm mb-4">
+                        {renderHighlightedText(data.h2)}
                     </div>
-                    <img src="/financial-health/ladder.png" className="w-28 sm:w-40 md:w-56 shrink-0 object-contain" alt="" />
+                    
+                    <h2 className="font-bold text-3xl sm:text-4xl text-[#000416]">
+                        {renderHighlightedText(data.h2)}
+                    </h2>
+                    
+                    <div className="w-[40px] h-[5px] my-5 bg-gradient-to-r from-primary to-secondary rounded-[10px]" />
+                    
+                    <p className="w-full lg:w-1/2 text-base sm:text-lg mb-2 text-foreground/80 leading-relaxed">
+                        {renderHighlightedText(data.p)}
+                    </p>
+                    
+                    <p className="font-bold mb-8 sm:mb-10 text-base sm:text-lg text-[#000416]">
+                        {data.pbold}
+                    </p>
                 </div>
-            </div>
-        </section>
+
+                <div className="space-y-8">
+                    {/* Container da lista de cards */}
+                    <div className="w-full bg-card-bg shadow-[0_2px_8px_0_rgba(0,0,0,0.15)] rounded-[10px] p-3 sm:p-5">
+                        {data.cards.map((card, index) => {
+                            const colour = card.colour;
+                            return (
+                                <div 
+                                    key={index} 
+                                    className="bg-white shadow-[0_2px_8px_0_rgba(0,0,0,0.08)] rounded-[10px] flex flex-row my-4 items-center justify-between min-h-[90px] md:h-32 border border-slate-100 overflow-hidden"
+                                >
+                                    <div 
+                                        style={{ background: colour }} 
+                                        className="text-white w-[25%] sm:w-[15%] md:w-[12%] h-full flex items-center text-center justify-center text-lg sm:text-2xl lg:text-3xl shrink-0"
+                                    >
+                                        <p className="font-bold">{card.number}</p>
+                                    </div>
+                                    
+                                    <div className="p-3 sm:p-5 flex flex-row justify-between items-center w-[75%] sm:w-[85%] md:w-[88%] h-full gap-2 sm:gap-4">
+                                        <img src={card.icon} alt="" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 object-contain" />
+                                        
+                                        <p style={{ color: colour }} className="w-[20%] sm:w-[18%] font-bold text-sm sm:text-lg md:text-xl shrink-0">
+                                            {card.classification}
+                                        </p>
+                                        
+                                        <div style={{ background: colour }} className="h-12 md:h-16 w-[2px] shrink-0" />
+                                        
+                                        <p className="text-[#000416] w-[60%] sm:w-[65%] text-xs sm:text-sm md:text-base leading-snug">
+                                            {card.p}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Banner inferior */}
+                    <div className="w-full bg-card-bg shadow-[0_2px_8px_0_rgba(0,0,0,0.15)] rounded-[10px] flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 gap-4">
+                        <div className="flex flex-row items-center gap-4 sm:gap-6">
+                            <div className="bg-primary rounded-full p-3 sm:p-4 shrink-0">
+                                <GoLightBulb className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" />
+                            </div>
+                            <div className="text-sm sm:text-base md:text-lg text-left">
+                                <p>{renderHighlightedText(data.lowp1)}</p>
+                                <p>{renderHighlightedText(data.lowp2)}</p>
+                            </div>
+                        </div>
+                        <img src="/financial-health/ladder.png" className="w-28 sm:w-40 md:w-56 shrink-0 object-contain" alt="" />
+                    </div>
+                </div>
+            </section>
+        </div>
     );
 }

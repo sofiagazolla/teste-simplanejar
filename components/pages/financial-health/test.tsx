@@ -52,7 +52,7 @@ export default function Test() {
 						</p>
 					</div>
 
-                    <a href="https://indice.febraban.org.br/calcule-seu-indice" target="_blank" rel="noopener noreferrer" className="mt-3 flex h-[44px] w-[329px] cursor-pointer items-center justify-center gap-4 rounded-[10px] bg-[var(--purple)] font-bold text-white hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 lg:h-[80px] lg:w-[400px]">
+                    <a href="https://indice.febraban.org.br/calcule-seu-indice" target="_blank" rel="noopener noreferrer" className="mx-auto lg:mx-0 mt-3 flex h-[44px] w-[329px] cursor-pointer items-center justify-center gap-4 rounded-[10px] bg-[var(--purple)] font-bold text-white hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 lg:h-[80px] lg:w-[400px]">
                         <LuClipboardList className="text-[30px] lg:text-[50px]" />
                         <p className="text-[20px] lg:text-[26px]">Fazer o teste</p>
                     </a>
