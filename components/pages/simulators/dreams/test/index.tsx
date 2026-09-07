@@ -165,7 +165,7 @@ export default function SonhosSimulator() {
 		<div>
 			{/* hero */}
 			<div className="relative overflow-hidden bg-white">
-				<div className="mx-auto flex max-w-[1360px] flex-col items-center justify-between gap-8 px-6 py-8 md:flex-row md:py-12">
+				<div className="mx-auto flex max-w-[1360px] flex-col items-stretch justify-between gap-8 px-6 py-8 md:flex-row md:items-center md:py-12">
 					<div className="min-w-0 flex-1">
 						<h2 className="gradient-text whitespace-nowrap text-[16px] font-bold md:text-[18px] xl:text-[24px]">SIMULADOR DE</h2>
 
@@ -193,110 +193,121 @@ export default function SonhosSimulator() {
 						</div>
 					</div>
 
-					<div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
-						{/* coluna esquerda */}
-						<div className="space-y-6">
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">1. Qual é o seu nome?</label>
-								<div className={`flex items-center px-4 py-3.5 ${inputContainerStyle}`}>
-									<User className="mr-3 h-5 w-5 shrink-0 text-gray-400" />
-									<input type="text" placeholder="Digite seu nome" value={form.name} onChange={e => f("name", e.target.value)} className="w-full bg-transparent text-[16px] text-white placeholder-gray-400 focus:outline-none" />
-								</div>
-							</div>
+					<style>{`
+						.dream-grid {
+							grid-template-areas: "name" "type" "value" "period" "existing" "return";
+						}
+						@media (min-width: 768px) {
+							.dream-grid {
+								grid-template-columns: 1fr 1fr;
+								grid-template-rows: repeat(4, auto);
+								grid-template-areas:
+									"name type"
+									"value type"
+									"period return"
+									"existing return";
+							}
+						}
+					`}</style>
 
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">3. Quanto você precisa para realizar o seu sonho ou projeto?</label>
-								<div className={`flex items-center ${inputContainerStyle} overflow-hidden`}>
-									<span className="border-r border-[#455790] bg-white/5 px-4 py-3.5 text-[16px] font-bold text-white">R$</span>
-									<input type="text" inputMode="numeric" placeholder="0,00" value={form.value} onChange={e => handleCurrencyChange("value", e.target.value)} className="w-full bg-transparent px-4 py-3.5 text-[16px] text-white placeholder-gray-400 focus:outline-none" />
-								</div>
-							</div>
-
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">4. Em quanto tempo você quer realizar seu sonho ou projeto?</label>
-								<div className="flex flex-col gap-3 sm:flex-row">
-									<div className={`flex flex-1 items-center px-4 py-3.5 ${inputContainerStyle}`}>
-										<Calendar className="mr-3 h-5 w-5 shrink-0 text-gray-400" />
-										<input type="number" placeholder="Digite o período" value={form.period} onChange={e => f("period", e.target.value)} className="w-full bg-transparent text-[16px] text-white placeholder-gray-400 focus:outline-none" />
-									</div>
-
-									<div className="relative sm:w-40">
-										<button type="button" onClick={() => setShowUnitDropdown(v => !v)} className={`flex w-full items-center justify-between px-4 py-3.5 text-[16px] ${inputContainerStyle}`}>
-											<span className={form.periodUnit ? "text-white" : "text-gray-400"}>{form.periodUnit || "Selecione"}</span>
-											<ChevronDown className="h-5 w-5 text-gray-400" />
-										</button>
-
-										{showUnitDropdown && (
-											<div className="absolute right-0 top-full z-20 mt-1 w-full overflow-hidden rounded-xl border border-[#455790] bg-[#20357A] shadow-2xl">
-												{(["Meses", "Anos"] as const).map(u => (
-													<button key={u} onClick={() => { f("periodUnit", u); setShowUnitDropdown(false); }} className="w-full px-4 py-3 text-left text-[16px] text-white transition-colors hover:bg-white/10">{u}</button>
-												))}
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">5. Quanto você já possui para esse objetivo?</label>
-								<div className={`flex items-center ${inputContainerStyle} overflow-hidden`}>
-									<span className="border-r border-[#455790] bg-white/5 px-4 py-3.5 text-[16px] font-bold text-white">R$</span>
-									<input type="text" inputMode="numeric" placeholder="0,00" value={form.existing} onChange={e => handleCurrencyChange("existing", e.target.value)} className="w-full bg-transparent px-4 py-3.5 text-[16px] text-white placeholder-gray-400 focus:outline-none" />
-								</div>
+					<div className="dream-grid grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+						<div style={{ gridArea: "name" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">1. Qual é o seu nome?</label>
+							<div className={`flex items-center px-4 py-3.5 ${inputContainerStyle}`}>
+								<User className="mr-3 h-5 w-5 shrink-0 text-gray-400" />
+								<input type="text" placeholder="Digite seu nome" value={form.name} onChange={e => f("name", e.target.value)} className="w-full bg-transparent text-[16px] text-white placeholder-gray-400 focus:outline-none" />
 							</div>
 						</div>
 
-						{/* coluna direita */}
-						<div className="space-y-6">
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">2. Selecione o seu sonho ou projeto</label>
-								<div className="relative">
-									<button type="button" onClick={() => setShowTypeDropdown(v => !v)} className={`flex w-full items-center justify-between px-4 py-3.5 text-[16px] ${inputContainerStyle}`}>
-										<span className={form.dreamType ? "text-white" : "text-gray-400"}>{form.dreamType || "Selecione uma opção"}</span>
+						<div style={{ gridArea: "type" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">2. Selecione o seu sonho ou projeto</label>
+							<div className="relative">
+								<button type="button" onClick={() => setShowTypeDropdown(v => !v)} className={`flex w-full items-center justify-between px-4 py-3.5 text-[16px] ${inputContainerStyle}`}>
+									<span className={form.dreamType ? "text-white" : "text-gray-400"}>{form.dreamType || "Selecione uma opção"}</span>
+									<ChevronDown className="h-5 w-5 text-gray-400" />
+								</button>
+
+								{showTypeDropdown && (
+									<div className="absolute z-20 mt-1 w-full overflow-hidden rounded-xl border border-[#455790] bg-[#20357A] shadow-2xl">
+										{DREAM_TYPES.map(t => (
+											<button key={t} onClick={() => { f("dreamType", t); setShowTypeDropdown(false); }} className="w-full px-4 py-3 text-left text-[16px] text-white transition-colors hover:bg-white/10">{t}</button>
+										))}
+									</div>
+								)}
+							</div>
+
+							<div className="mt-3 rounded-2xl border border-[#455790] bg-[#20357A] p-4 text-white">
+								<label className="mb-2 block text-[16px] font-medium text-white">Identifique o seu sonho ou projeto</label>
+								<input type="text" placeholder="Digite aqui o seu sonho ou projeto" value={form.dreamName} onChange={e => f("dreamName", e.target.value)} className={`w-full px-4 py-3 ${inputContainerStyle} text-[16px] placeholder-gray-400 focus:outline-none`} />
+							</div>
+						</div>
+
+						<div style={{ gridArea: "value" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">3. Quanto você precisa para realizar o seu sonho ou projeto?</label>
+							<div className={`flex items-center ${inputContainerStyle} overflow-hidden`}>
+								<span className="border-r border-[#455790] bg-white/5 px-4 py-3.5 text-[16px] font-bold text-white">R$</span>
+								<input type="text" inputMode="numeric" placeholder="0,00" value={form.value} onChange={e => handleCurrencyChange("value", e.target.value)} className="w-full bg-transparent px-4 py-3.5 text-[16px] text-white placeholder-gray-400 focus:outline-none" />
+							</div>
+						</div>
+
+						<div style={{ gridArea: "period" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">4. Em quanto tempo você quer realizar seu sonho ou projeto?</label>
+							<div className="flex flex-col gap-3 sm:flex-row">
+								<div className={`flex flex-1 items-center px-4 py-3.5 ${inputContainerStyle}`}>
+									<Calendar className="mr-3 h-5 w-5 shrink-0 text-gray-400" />
+									<input type="number" placeholder="Digite o período" value={form.period} onChange={e => f("period", e.target.value)} className="w-full bg-transparent text-[16px] text-white placeholder-gray-400 focus:outline-none" />
+								</div>
+
+								<div className="relative sm:w-40">
+									<button type="button" onClick={() => setShowUnitDropdown(v => !v)} className={`flex w-full items-center justify-between px-4 py-3.5 text-[16px] ${inputContainerStyle}`}>
+										<span className={form.periodUnit ? "text-white" : "text-gray-400"}>{form.periodUnit || "Selecione"}</span>
 										<ChevronDown className="h-5 w-5 text-gray-400" />
 									</button>
 
-									{showTypeDropdown && (
-										<div className="absolute z-20 mt-1 w-full overflow-hidden rounded-xl border border-[#455790] bg-[#20357A] shadow-2xl">
-											{DREAM_TYPES.map(t => (
-												<button key={t} onClick={() => { f("dreamType", t); setShowTypeDropdown(false); }} className="w-full px-4 py-3 text-left text-[16px] text-white transition-colors hover:bg-white/10">{t}</button>
+									{showUnitDropdown && (
+										<div className="absolute right-0 top-full z-20 mt-1 w-full overflow-hidden rounded-xl border border-[#455790] bg-[#20357A] shadow-2xl">
+											{(["Meses", "Anos"] as const).map(u => (
+												<button key={u} onClick={() => { f("periodUnit", u); setShowUnitDropdown(false); }} className="w-full px-4 py-3 text-left text-[16px] text-white transition-colors hover:bg-white/10">{u}</button>
 											))}
 										</div>
 									)}
 								</div>
-
-								<div className="mt-3 rounded-2xl border border-[#455790] bg-[#20357A] p-4 text-white">
-									<label className="mb-2 block text-[16px] font-medium text-white">Identifique o seu sonho ou projeto</label>
-									<input type="text" placeholder="Digite aqui o seu sonho ou projeto" value={form.dreamName} onChange={e => f("dreamName", e.target.value)} className={`w-full px-4 py-3 ${inputContainerStyle} text-[16px] placeholder-gray-400 focus:outline-none`} />
-								</div>
 							</div>
+						</div>
 
-							<div>
-								<label className="mb-2 block text-[18px] font-semibold text-white">6. Rentabilidade esperada (ao ano)</label>
-								<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-									<button type="button" onClick={() => f("returnType", "poupanca")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "poupanca" ? "border-[#7C4DFF] bg-[#20357A] shadow-lg shadow-[#7C4DFF]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
-										<div className="mb-3 flex items-center gap-2">
-											<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "poupanca" ? "border-[#7C4DFF]" : "border-gray-500"}`}>{form.returnType === "poupanca" && <div className="h-2.5 w-2.5 rounded-full bg-[#7C4DFF]" />}</div>
-											<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><PiggyBank className="h-5 w-5 text-[#2ED8E8]" /></div>
-										</div>
-										<div className="mb-1 text-[16px] font-bold text-white">Rentabilidade da poupança</div>
-										<p className="mb-3 text-[16px] leading-snug text-white">Usar rentabilidade média da poupança na simulação.</p>
-										<div className="text-[16px] font-bold text-[#2ED8E8]">{POUPANCA_RATE_AA}% a.a.*</div>
-									</button>
+						<div style={{ gridArea: "existing" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">5. Quanto você já possui para esse objetivo?</label>
+							<div className={`flex items-center ${inputContainerStyle} overflow-hidden`}>
+								<span className="border-r border-[#455790] bg-white/5 px-4 py-3.5 text-[16px] font-bold text-white">R$</span>
+								<input type="text" inputMode="numeric" placeholder="0,00" value={form.existing} onChange={e => handleCurrencyChange("existing", e.target.value)} className="w-full bg-transparent px-4 py-3.5 text-[16px] text-white placeholder-gray-400 focus:outline-none" />
+							</div>
+						</div>
 
-									<button type="button" onClick={() => f("returnType", "custom")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "custom" ? "border-[#2ED8E8] bg-[#20357A] shadow-lg shadow-[#2ED8E8]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
-										<div className="mb-3 flex items-center gap-2">
-											<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "custom" ? "border-[#2ED8E8]" : "border-gray-500"}`}>{form.returnType === "custom" && <div className="h-2.5 w-2.5 rounded-full bg-[#2ED8E8]" />}</div>
-											<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><TrendingUp className="h-5 w-5 text-[#2ED8E8]" /></div>
-										</div>
-										<div className="mb-1 text-[16px] font-bold text-white">Informar outra rentabilidade</div>
-										<p className="mb-3 text-[16px] leading-snug text-white">Digite a rentabilidade anual que você deseja obter.</p>
-										<div className="flex items-center gap-2">
-											<input type="text" inputMode="decimal" value={form.customReturn} onChange={e => f("customReturn", e.target.value.replace(/[^0-9,.]/g, ""))} placeholder="0.00" className="w-20 rounded-lg border border-[#455790] bg-[#20357A] px-2 py-1.5 text-center text-[16px] text-white focus:outline-none" />
-											<span className="text-[16px] font-semibold text-white">% a.a.</span>
-										</div>
-									</button>
-								</div>
+						<div style={{ gridArea: "return" }}>
+							<label className="mb-2 block text-[18px] font-semibold text-white">6. Rentabilidade esperada (ao ano)</label>
+							<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+								<button type="button" onClick={() => f("returnType", "poupanca")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "poupanca" ? "border-[#7C4DFF] bg-[#20357A] shadow-lg shadow-[#7C4DFF]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
+									<div className="mb-3 flex items-center gap-2">
+										<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "poupanca" ? "border-[#7C4DFF]" : "border-gray-500"}`}>{form.returnType === "poupanca" && <div className="h-2.5 w-2.5 rounded-full bg-[#7C4DFF]" />}</div>
+										<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><PiggyBank className="h-5 w-5 text-[#2ED8E8]" /></div>
+									</div>
+									<div className="mb-1 text-[16px] font-bold text-white">Rentabilidade da poupança</div>
+									<p className="mb-3 text-[16px] leading-snug text-white">Usar rentabilidade média da poupança na simulação.</p>
+									<div className="text-[16px] font-bold text-[#2ED8E8]">{POUPANCA_RATE_AA}% a.a.*</div>
+								</button>
+
+								<button type="button" onClick={() => f("returnType", "custom")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "custom" ? "border-[#2ED8E8] bg-[#20357A] shadow-lg shadow-[#2ED8E8]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
+									<div className="mb-3 flex items-center gap-2">
+										<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "custom" ? "border-[#2ED8E8]" : "border-gray-500"}`}>{form.returnType === "custom" && <div className="h-2.5 w-2.5 rounded-full bg-[#2ED8E8]" />}</div>
+										<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><TrendingUp className="h-5 w-5 text-[#2ED8E8]" /></div>
+									</div>
+									<div className="mb-1 text-[16px] font-bold text-white">Informar outra rentabilidade</div>
+									<p className="mb-3 text-[16px] leading-snug text-white">Digite a rentabilidade anual que você deseja obter.</p>
+									<div className="flex items-center gap-2">
+										<input type="text" inputMode="decimal" value={form.customReturn} onChange={e => f("customReturn", e.target.value.replace(/[^0-9,.]/g, ""))} placeholder="0.00" className="w-20 rounded-lg border border-[#455790] bg-[#20357A] px-2 py-1.5 text-center text-[16px] text-white focus:outline-none" />
+										<span className="text-[16px] font-semibold text-white">% a.a.</span>
+									</div>
+								</button>
 							</div>
 						</div>
 					</div>
