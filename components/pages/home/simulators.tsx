@@ -7,7 +7,8 @@ interface simulatorsData {
     button : string,
     cards : cardData[],
     bottomItems: bottomItem[],
-    mainBottomItem: bottomItem
+    mainBottomItem: bottomItem,
+    buttonText ?: string
 }
 
 interface bottomItem {
@@ -32,7 +33,7 @@ const data : simulatorsData = {
         smallImage: "/simulators/simulators-images/s0.png"
     },
     {
-        name: "PLANEJAMENTO DE LONGO PRAZO",
+        name: "PLANEJE SEU FUTURO",
         title: "Simulador de **Reserva para Aposentadoria**",
         description: "Planeja seu futuro e veja quanto você precisa investir para ter mais tranquilidade na aposentadoria.",
         image: "/simulators/simulators-images/simulators1.png",
@@ -45,24 +46,26 @@ const data : simulatorsData = {
     {
         name: "AUTOCONHECIMENTO",
         title: "Índice de **Saúde Financeira**",
-        description: "Avalie sua situação financeira atual e receba dicas personalizadas para melhorar seu controle.",
+        description: "Faça o Teste e descubra como está sua saúde financeira. Conte com o SIM PLANEJAR em sua jornada!",
         image: "/simulators/simulators-images/simulators2.png",
         alt: "",
         icon: "/simulators/simulators-icons/simulator2.png",
         href: "/indice-de-saude-financeira",
         color: "#01AEAA",
-        smallImage: "/simulators/simulators-images/s2.png"
+        smallImage: "/simulators/simulators-images/s2.png",
+        buttonText: "Acessar o Teste"
     },
     {
-        name: "INVESTIMENTOS",
+        name: "PERFIL DE INVESTIDOR",
         title: "Perfil de **Investidor (Suitability)**",
-        description: "Descubra seu perfil de investidor e conheça os investimentos mais adequados para você.",
+        description: "Conhecer seu perfil de investidor é fundamental para nortear suas decisões de investimentos. Faça o teste e descubra!",
         image: "/simulators/simulators-images/simulators3.png",
         alt: "",
         icon: "/simulators/simulators-icons/simulator3.png",
         href: "/suitability",
         color: "#7C4DFF",
-        smallImage: "/simulators/simulators-images/s3.png"
+        smallImage: "/simulators/simulators-images/s3.png",
+        buttonText: "Acessar o Teste"
     }],
     bottomItems: [
         { iconPath: "simulators/simulators-icons/bottomIcon0.svg", description: "Seguros e confiáveis" },
@@ -72,18 +75,18 @@ const data : simulatorsData = {
     ],
     mainBottomItem: {
         iconPath: "simulators/simulators-icons/bottomIcon3.svg",
-        description: "Todos os simuladores são **gratuitos** e foram desenvolvidos para apoiar suas decisões financeiras."
+        description: "Todos os simuladores e testes são **gratuitos** e apoiam você em sua jornada financeira"
     }
 }
 
 export default function Simulators() {
     return(
-        <section id="simuladores" className="w-full py-6 md:py-10 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto">
+        <section id="simuladores" className="w-full py-5 md:py-8 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto">
             <div className="mx-auto flex flex-col items-center gap-8 lg:gap-10">
                 
                 <div className="flex flex-col xl:flex-row w-full gap-8 xl:gap-10 items-stretch">
                     
-                    <div className="flex flex-col w-full xl:w-[35%] xl:shrink-0 justify-between">
+                    <div className="flex flex-col w-full xl:w-[32%] xl:shrink-0 justify-between">
                         <div>
                             <h1 className="font-nunito text-lg md:text-2xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                                 {data.title}

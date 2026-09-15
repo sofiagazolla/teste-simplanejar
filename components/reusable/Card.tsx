@@ -10,6 +10,7 @@ export interface cardData {
     href: string
     color?: string
     smallImage?: string
+    buttonText ?: string
 }
 interface prop { props: cardData }
 
@@ -62,8 +63,8 @@ export function Card({ props }: prop) {
                         <div className="w-full h-px bg-[var(--card-accent)]"/>
 
                         <div className="flex flex-row justify-between px-[5px] pt-2.5">
-                            <span className="text-[var(--card-accent)] font-nunito font-bold text-sm md:text-base">
-                                Acessar Simulador
+                            <span className="text-[var(--card-accent)] font-nunito font-bold text-sm md:text-base px-4">
+                                {props.buttonText ? props.buttonText : "Acessar o Simulador"}
                             </span>
                             <div>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

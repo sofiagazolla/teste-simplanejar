@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <>
       <Hero></Hero>
+      <Simulators></Simulators>
       <Book></Book>
+      <Videos></Videos>
       <About/>
       <Founder/>
-      <Simulators></Simulators>
-      <Videos></Videos>
     </>
   );
 }

@@ -77,15 +77,69 @@ const reviews: Review[] = [
     {
         rating: 5,
         quote:
-            "Leitura prática, objetiva e fácil de aplicar no dia a dia. Me ajudou a organizar minhas finanças e ter clareza sobre meus objetivos.",
-        author: "Carla M.",
+            "Muito bom para quem busca controles pesoais e domésticos, indico.",
+        author: "José R. M.",
+        initial: "J",
+    },
+    {
+        rating: 5,
+        quote: "Prático e de fácil leitura! Excelente!",
+        author: "Angelyca",
+        initial: "A",
+    },
+    {
+        rating: 5,
+        quote: "Realmente é um ótimo livro para quem está disposto a se reorganizar financeiramente, ter controle sobre seus gastos e voltar a prosperar nas finanças. Mas tem que estar disposto a seguir o passo a passo. Ainda estou lendo e estou seguindo passo a passso as coisas estão melhorando por aqui. Obrigada, Simone Costa.",
+        author: "Stephanie D. S.",
+        initial: "S",
+    },
+    {
+        rating: 5,
+        quote: "Simplesmente maravilhoso. Para iniciantes, mas bem completo",
+        author: "Aline R.",
+        initial: "A",
+    },
+    {
+        rating: 5,
+        quote: "Eu gostei de todo o conteúdo, a parte na planilha é ótima, por não ter a oportunidade de estudar no passado agora aos 55 anos, tudo que leio sobre economia passo o conhecimento pros filhos e netos, na minha opinião economia deveria ser matéria nas escolas desde cedo. Por que agora que estou fazendo minha reserva financeira.",
+        author: "Carmo Maria",
         initial: "C",
     },
     {
         rating: 5,
-        quote: "Mudou completamente a forma como eu penso o meu dinheiro.",
-        author: "Bruno S.",
-        initial: "B",
+        quote: "Gostei muito do livro, tem me ajudado muito no repensar de como minimizar minhas finanças. Ótimo livro.",
+        author: "Eliane",
+        initial: "E",
+    },
+    {
+        rating: 5,
+        quote: "Muito bom para quem deseja construir um propósito financeiro e ter controle de suas ações financeiras.",
+        author: "Carlos Alberto M. F.",
+        initial: "C",
+    },
+    {
+        rating: 5,
+        quote: "O livro estimula a organização financeira, tem tabelas e dicas valiosas.",
+        author: "Elaine S. S.",
+        initial: "E",
+    },
+    {
+        rating: 5,
+        quote: "Excelente conteúdo.",
+        author: "Daniela P. R.",
+        initial: "D",
+    },
+    {
+        rating: 5,
+        quote: "O conteúdo deste livro é uma delícia, já li vários livros de planejamento financeiro, mas nunca vi um livro com tanta praticidade e clareza em seu conteúdo. Estou muito feliz com essa aquisição, super recomendo. Tive o privilégio de conhecer a Simone, uma pessoa ímpar, muito inteligente e humana. Ansiosa por mais livros assim. Obrigada.",
+        author: "Nivia",
+        initial: "N",
+    },
+    {
+        rating: 4,
+        quote: 'O livro traz explicações sobre o tema finanças e você pode acessar um passo a passo de progresso da leitura a medida que os capítulos avançam com uma "pesquisa" ao final de cada tema. Contém muitas tabelas que podem ser usadas como modelos para quem deseja organizar sua vida financeira.',
+        author: "Pâmela F.",
+        initial: "P",
     },
 ];
 
@@ -240,9 +294,9 @@ export function Book() {
     const goTo = (index: number) => setPage((index + pageCount) % pageCount);
 
     return (
-        <div className="flex flex-col items-center p-[2%] w-full max-w-[1440px] mx-auto">
-            <div className="flex flex-col w-full p-4 md:p-8 lg:p-10">
-                <h1 className="font-nunito text-lg md:text-2xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex flex-col items-center p-[2%] py-5 w-full max-w-[1440px] mx-auto">
+            <div className="flex flex-col w-full md:px-8 lg:px-10">
+                <h1 className="font-nunito text-lg md:text-2xl font-extrabold bg-gradient-to-r from-[#7C4DFF] to-[#2ED8E8] bg-clip-text text-transparent w-fit">
                     LIVRO
                 </h1>
 
@@ -256,26 +310,6 @@ export function Book() {
                             className="w-[220px] md:w-[280px] lg:w-[290px] xl:w-[340px] h-auto object-contain"
                         />
 
-                        <a
-                            href={amazonLink}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-3 rounded-[10px] bg-white px-4 py-3 shadow-[0_4px_4px_0_rgba(0,0,0,0.15)]"
-                        >
-                            <Image
-                                src="/book/amazon-logo.svg"
-                                alt="Amazon"
-                                width={40}
-                                height={40}
-                                className="h-9 w-9 shrink-0"
-                            />
-                            <span className="font-nunito text-sm font-semibold text-dark-blue">
-                                Disponível na Amazon
-                                <span className="block text-xs font-normal text-foreground/70">
-                                    Compra segura e entrega rápida.
-                                </span>
-                            </span>
-                        </a>
                     </div>
 
                     <div className="flex flex-col flex-1 min-w-0 lg:max-w-[520px] xl:max-w-[600px]">
@@ -346,7 +380,7 @@ export function Book() {
                                 className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-[10px] bg-[#7C4DFF] px-5 py-4 font-nunito text-sm xl:text-base font-extrabold text-white shadow-[0_1px_4px_0_rgba(0,0,0,0.25)] hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200"
                             >
                                 <MdOutlineShoppingCart size={20} />
-                                Comprar agora na Amazon
+                                Comprar agora
                                 <ChevronRight className="h-4 w-4" />
                             </a>
 

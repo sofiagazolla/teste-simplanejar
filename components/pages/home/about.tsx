@@ -52,6 +52,9 @@ const data: AboutSimplanejarData = {
         ],
         [
             {text: "Muitas pessoas sonham com a casa própria, uma aposentadoria mais tranquila, uma viagem ou simplesmente uma vida financeira mais organizada, mas não sabem por onde começar quando o assunto é planejamento financeiro."}
+        ],
+        [
+            {text: "O SIM PLANEJAR nasceu para ajudar você nesta Jornada! Organize suas finanças, faça escolhas conscientes e assuma o controle da sua vida financeira, tornando-se protagonista da sua própria história."}
         ]
     ],
     img: {
@@ -124,7 +127,7 @@ export function About() {
      const ButtonIcon = data.button.icon;
  
     return (
-        <section className="overflow-hidden w-full max-w-[1440px] mx-auto px-4 py-16 sm:px-10 lg:px-16 lg:py-24">
+        <section className="overflow-hidden w-full max-w-[1440px] mx-auto px-4 py-5 sm:px-10 lg:px-16">
             <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[4fr_6fr] lg:gap-[77px]">
                 {/* Text column */}
                 <div className="flex flex-col lg:block order-2 lg:order-1">
@@ -190,7 +193,7 @@ export function About() {
                                 return (
                                     <div
                                         key={i}
-                                        className="flex flex-col items-center text-center lg:items-start lg:px-3 lg:text-left first:lg:pl-0"
+                                        className="flex flex-col items-center text-center lg:px-3 first:lg:pl-0"
                                     >
                                         <div
                                             className="mb-3 flex h-11 lg:h-15 w-11 lg:w-15 items-center justify-center rounded-full"

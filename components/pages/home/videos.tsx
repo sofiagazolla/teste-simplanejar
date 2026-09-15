@@ -104,7 +104,7 @@ export function Videos() {
   };
 
   return (
-    <section className="w-full bg-[#FCFCFE] py-12 lg:py-20 font-['Nunito',sans-serif] overflow-hidden">
+    <section className="w-full bg-[#FCFCFE] py-5 md:py-8 font-['Nunito',sans-serif] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-12 justify-between">
           
@@ -271,7 +271,7 @@ export function Videos() {
 
                     <div className="hidden lg:flex flex-col flex-1 min-w-0 justify-center">
                       <h4 className="font-semibold text-[17px] leading-[24px] text-[#000416] group-hover:text-[#7C4DFF] transition-colors line-clamp-2">
-                        {serie.title} — {serie.description}
+                        <span className='font-bold text-[#7C4DFF]'>{serie.title}</span> — {serie.description}
                       </h4>
 
                       <div className="flex items-center gap-2 font-medium text-[15px] leading-[22px] text-[#000416] mt-2">

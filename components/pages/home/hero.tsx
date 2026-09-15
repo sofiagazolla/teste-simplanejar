@@ -20,11 +20,11 @@ type HeroProps = {
 
 export function Hero({ content = heroContent }: HeroProps) {
   return (
-    <section className="relative w-full overflow-hidden px-4 py-6 sm:px-6 sm:py-11 lg:px-8">
+    <section className="relative w-full overflow-hidden px-4 py-5 md:py-8  sm:px-6 lg:px-8">
       <div className="mx-auto flex w-full max-w-[1400px] flex-col">
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(400px,760px)] lg:items-center lg:gap-10">
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(400px,1fr)_clamp(350px,45vw,823px)] lg:items-start lg:gap-x-10 lg:gap-y-6">
           
-          <div className="order-1 flex flex-col">
+          <div className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col">
             <p className="gradient-text text-[20px] font-bold leading-8 xl:text-[24px]">
               {content.eyebrow}
             </p>
@@ -42,7 +42,7 @@ export function Hero({ content = heroContent }: HeroProps) {
             </p>
           </div>
 
-          <div className="order-2 relative mx-auto w-full max-w-[280px] sm:max-w-[420px] md:max-w-[520px] lg:order-2 lg:mx-0 lg:max-w-none lg:self-start">
+          <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 relative mx-auto w-full max-w-[280px] sm:max-w-[420px] md:max-w-[520px] lg:order-2 lg:mx-0 lg:max-w-none lg:self-center">
             <Image
               src={content.image.src}
               alt={content.image.alt}
@@ -54,7 +54,7 @@ export function Hero({ content = heroContent }: HeroProps) {
             />
           </div>
 
-<div className="order-3 grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:flex-wrap sm:gap-5 lg:order-3">
+<div className="order-3 grid grid-cols-2 gap-3 sm:gap-5 lg:order-3 lg:col-start-1 lg:row-start-2">
   {content.buttons.map((button, index) => {
     const Icon = button.icon ? buttonIconMap[button.icon] : null;
 
@@ -65,23 +65,21 @@ export function Hero({ content = heroContent }: HeroProps) {
         href={button.href}
         variant={button.variant}
         icon={Icon ? <Icon /> : undefined}
-        className={`w-full justify-center px-3 text-center text-[14px] transition-all md:text-[16px] lg:text-[18px] sm:w-auto ${
+        className={`w-full justify-center px-3 text-center text-[14px] transition-all md:text-[16px] lg:text-[18px] ${
 	        index === 0 ? "" : "border-2 border-[#01AEAA] text-[#01AEAA] hover:bg-[#D7ECF1] hover:shadow-lg transition-all duration-200"
         }`}
       />
     );
   })}
-</div>
 
-          <div className="order-4 grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:gap-5 lg:order-4">
-            {content.featureCards.map((card) => (
+  {content.featureCards.map((card) => (
               <HeroFeatureCardItem
                 key={card.category}
                 card={card}
-                className="w-full flex-1"
+                className="w-full"
               />
             ))}
-          </div>
+</div>
 
         </div>
       </div>
