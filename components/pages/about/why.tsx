@@ -61,9 +61,9 @@ export default function Why() {
 					<Image
 						src={whyMockData.image.path}
 						alt={whyMockData.image.alt}
-						width={706}
-						height={605}
-						className="h-auto w-full max-w-[480px] object-contain"
+						width={900}
+						height={770}
+						className="h-auto w-full max-w-[480px] object-contain lg:max-w-[850px]"
 					/>
 				</div>
 			</div>

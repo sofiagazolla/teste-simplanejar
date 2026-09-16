@@ -149,7 +149,7 @@ export function Reviews() {
               className="inline-flex items-center gap-4 px-6 py-3.5 border-2 border-[#7C4DFF] rounded-xl bg-white hover:bg-[#6939E8]/5 hover:shadow-lg transition-all duration-200"
             >
               <Image
-                src="/images/amazon-logo.png"
+                src="/book/amazon-logo.svg"
                 alt="Amazon Logo"
                 width={100}
                 height={28}
@@ -170,7 +170,7 @@ export function Reviews() {
               className="flex items-center justify-center gap-3 px-4 py-4 border-2 border-[#7C4DFF] rounded-xl bg-white hover:bg-[#7C4DFF]/5 transition-colors shadow-sm w-full"
             >
               <Image
-                src="/images/amazon-logo.png"
+                src="/book/amazon-logo.svg"
                 alt="Amazon Logo"
                 width={100}
                 height={28}
@@ -210,11 +210,23 @@ export function Reviews() {
             >
               {extendedReviews.map((review, idx) => (
                 <div key={`${review.id}-${idx}`} className="w-full md:w-[33.333333%] flex-shrink-0 px-3">
-                  <div className="bg-white rounded-[24px] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full min-h-[340px]">
-                    
+                  <div className="relative bg-white rounded-[24px] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full min-h-[340px]">
+
+                    {/* Selo Amazon (fora da faixa md-lg, ou seja, abaixo de 768px e a partir de 1024px) */}
+                    <div className="absolute top-5 right-5 sm:top-6 sm:right-6 block md:hidden lg:block" title="Avaliação extraída da Amazon">
+                      <Image
+                        src="/book/amazon-logo.svg"
+                        alt="Avaliação da Amazon"
+                        width={110}
+                        height={32}
+                        unoptimized
+                        className="h-7 sm:h-8 w-auto object-contain opacity-90"
+                      />
+                    </div>
+
                     {/* Aspas + Estrelas */}
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-[#a682ff]/80 text-6xl font-serif mt-6 leading-[0]">“</span>
+                    <div className="flex items-center gap-3 mb-4 pr-24 sm:pr-28 md:pr-0 lg:pr-28">
+                      <span className="text-[#a682ff]/80 text-6xl font-serif mt-6 leading-[0]">&ldquo;</span>
                       <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -238,16 +250,27 @@ export function Reviews() {
                     </div>
 
                     {/* Rodapé do Card Ajustado */}
-                    <div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-2 mt-auto pt-4 border-t border-gray-50">
-                      <div className="flex items-center gap-2.5 shrink-0">
+                    <div className="flex flex-wrap items-center justify-between gap-y-3 gap-x-2 mt-auto pt-4 border-t border-gray-50">
+                      <div className="flex items-center gap-2 shrink-0">
                         <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#7C4DFF] flex items-center justify-center text-white text-base sm:text-lg font-extrabold shadow-sm shrink-0">
                           {review.initial}
                         </div>
                         <span className="font-bold text-[#0e1738] text-sm sm:text-[15px]">
                           {review.author}
                         </span>
+
+                        {/* Selo Amazon ao lado do nome (só na faixa md, 768-1023px) */}
+                        <Image
+                          src="/book/amazon-logo.svg"
+                          alt="Amazon"
+                          width={90}
+                          height={26}
+                          unoptimized
+                          className="hidden md:block lg:hidden h-6 w-auto object-contain opacity-90 ml-1"
+                          title="Avaliação extraída da Amazon"
+                        />
                       </div>
-                      
+
                       <div className="flex items-center gap-1 text-[#7C4DFF] shrink-0 whitespace-nowrap">
                         <CheckCircle2 className="w-4 h-4 shrink-0" />
                         <span className="font-bold text-[12px] sm:text-[13px]">

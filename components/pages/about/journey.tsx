@@ -10,7 +10,7 @@ const data = {
     title: "NOSSA JORNADA",
     subtitle: "Uma história construída **etapa por etapa.**",
     description: "Desde 2014, o SIM PLANEJAR tem como propósito tornar o planejamento financeiro mais acessível, simples e próximo da realidade das pessoas, incentivando maior consciência financeira e ajudando cada indivíduo a **assumir o controle da própria vida financeira** por meio de pequenas mudanças e decisões mais conscientes no dia a dia.",
-    quote: "Acreditamos que pequenas mudanças hoje constroem **grandes conquistas** amanhã.",
+    quote: "Acreditamos que pequenas mudanças hoje constroem **grandes conquistas**.",
     dates: [
         {
             year: "2014",

@@ -86,7 +86,7 @@ const aboutMockData: AboutData = {
         alt: "Livro Planejamento Financeiro: Você no Controle, da autora Simone Costa."
     },
     buyButton: {
-        text: "Comprar agora na Amazon  >",
+        text: "COMPRAR AGORA  >",
         link: "https://www.amazon.com.br/Planejamento-Financeiro-Voc%C3%AA-no-controle/dp/6550471559/ref=asc_df_6550471559?mcid=6fc688970b95384795e11ebdbce99e58&tag=googleshopp00-20&linkCode=df0&hvadid=709856848245&hvpos=&hvnetw=g&hvrand=15531010741051199456&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9102216&hvtargid=pla-1661282036085&psc=1&hvocijid=15531010741051199456-6550471559-&hvexpln=0&language=pt_BR"
     },
     availableButton: {

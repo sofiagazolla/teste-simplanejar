@@ -15,7 +15,7 @@ export function Book() {
       {/* ================= LAYOUT MOBILE (< lg) ================= */}
       <div className="flex flex-col items-center text-center lg:hidden">
         {/* Tag Superior */}
-        <span className="font-extrabold text-[#7C4DFF] rounded-full bg-[#7C4DFF]/15 px-5 py-2.5 text-sm uppercase tracking-wide mb-4">
+        <span className="text-[20px] font-bold gradient-text whitespace-nowrap uppercase mb-2 mb-4">
           QUER MUDAR ESSA REALIDADE?
         </span>
 
@@ -33,20 +33,16 @@ export function Book() {
         {/* Textos Centralizados (Ajustados para text-base) */}
         <div className="font-semibold text-base text-[#000416] leading-relaxed space-y-3 mb-6 max-w-md">
           <p>
-            Conhecer a situação financeira é importante, mas a transformação começa quando você{" "}
-            <span className="text-[#7C4DFF]">decide agir.</span>
+            Conhecer a situação financeira é importante, mas a transformação começa quando você decide agir.
           </p>
           <p>
-            Conheça o livro{" "}
-            <span className="text-[#7C4DFF]">Planejamento Financeiro.</span>
+            Conheça o livro Planejamento financeiro: você no controle!.
           </p>
           <p>
-            O melhor momento para começar não é quando tudo estiver perfeito,{" "}
-            <span className="text-[#7C4DFF]">é agora.</span>
+            O melhor momento para começar não é quando tudo estiver perfeito, é agora.
           </p>
           <p>
-            Transforme conhecimento em{" "}
-            <span className="text-[#7C4DFF]">ação.</span>
+            Transforme conhecimento em ação.
           </p>
         </div>
 
@@ -113,7 +109,7 @@ export function Book() {
       <div className="hidden lg:flex flex-row items-center justify-between gap-12">
         {/* Coluna da Esquerda */}
         <div className="w-[60%] flex flex-col items-start z-10">
-          <span className="font-extrabold text-[#7C4DFF] rounded-full bg-[#7C4DFF]/10 px-6 py-2.5 text-base mb-6">
+          <span className="text-[20px] xl:text-[24px] font-bold gradient-text whitespace-nowrap uppercase mb-2 mb-6">
             QUER MUDAR ESSA REALIDADE?
           </span>
 
@@ -127,17 +123,11 @@ export function Book() {
           <div className="gradient-background h-[5px] w-[40px] rounded-[10px] mb-6" />
 
           <p className="font-semibold text-lg lg:text-xl text-[#000416] leading-relaxed mb-8">
-            Conhecer a situação financeira é importante, mas a transformação começa quando você{" "}
-            <span className="text-[#7C4DFF]">decide agir.</span> <br />
-            Conheça o livro{" "}
-            <span className="text-[#7C4DFF]">
-              Planejamento Financeiro.
-            </span>{" "}
+            Conhecer a situação financeira é importante, mas a transformação começa quando você decide agir. <br />
+            Conheça o livro Planejamento financeiro: você no controle!
             <br />
-            O melhor momento para começar não é quando tudo estiver perfeito,{" "}
-            <span className="text-[#7C4DFF]">é agora.</span> <br />
-            Transforme conhecimento em{" "}
-            <span className="text-[#7C4DFF]">ação.</span>
+            O melhor momento para começar não é quando tudo estiver perfeito, é agora. <br />
+            Transforme conhecimento em ação.
           </p>
 
           <div className="w-full bg-[#FCFCFE] rounded-2xl p-8 shadow-sm border border-[#F2F0FD] grid grid-cols-4 gap-6 items-center justify-items-center mb-10">

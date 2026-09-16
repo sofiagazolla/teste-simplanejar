@@ -121,7 +121,7 @@ const valuesMockData: ValuesData = {
                     path: "/about/ods/SDG-5.png",
                     alt: "Logotipo do ODS 5: Igualdade de Gênero. Quadrado vermelho-alaranjado com o número 5 e o símbolo do gênero feminino com um sinal de igual no centro."
                 },
-                description: "Incentivamos a autonomia e o empoderamento financeiro de mulheres."
+                description: "Incentivamos a autonomia e o empoderamento financeiro."
             },
             {
                 image: {

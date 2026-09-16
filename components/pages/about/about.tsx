@@ -56,7 +56,7 @@ export default function About() {
                             <HiOutlineBookOpen size={28} color="var(--purple)" />
                         </div>
 
-                        <p className="min-w-0 flex-1 text-[14px] md:text-[16px] leading-[25px] xl:leading-[35px] font-medium text-[#000416]">
+                        <p className="min-w-0 flex-1 text-[14px] md:text-[16px] font-medium text-[#000416]">
                             O SIM PLANEJAR acredita que todo brasileiro pode ser{" "}
                             <span className="font-bold text-[var(--purple)]">protagonista da sua própria vida financeira</span>{" "}
                             quando passa a compreender melhor a relação entre dinheiro, escolhas e futuro.
@@ -70,7 +70,7 @@ export default function About() {
                             <LuTarget size={28} color="var(--purple)" />
                         </div>
 
-                        <p className="min-w-0 flex-1 text-[14px] md:text-[16px] leading-[25px] xl:leading-[35px] font-medium text-[#000416]">
+                        <p className="min-w-0 flex-1 text-[14px] md:text-[16px] font-medium text-[#000416]">
                             Muitas pessoas sonham com a casa própria, uma aposentadoria mais tranquila, uma viagem ou simplesmente uma vida financeira mais organizada, mas não sabem por onde começar quando o assunto é{" "}
                             <span className="font-bold text-[var(--purple)]">planejamento financeiro</span>.
                         </p>
@@ -88,6 +88,8 @@ export default function About() {
                             transforma o indivíduo, consequentemente a sociedade e, por conseguinte,{" "}
                             <span className="text-[#2ED8E8]"> o planeta.</span>
                         </p>
+
+                        <p className="mt-3 mr-8 text-right italic font-semibold text-[#020218] lg:w-[85%] lg:max-w-[475px]"> — Simone Costa </p>
 
                         <div className="absolute right-4 bottom-5 inline-flex rotate-180 lg:right-0 lg:bottom-0">
                             <Image src="/about/quotes.svg" alt="" width={32} height={20} />

@@ -34,7 +34,7 @@ export default function Test() {
 						</p>
 
 						<p className="text-[14px] font-semibold leading-[18px] text-[#000416] md:text-[16px] md:leading-[21px] lg:leading-[28px] xl:text-[18px] xl:leading-[32px]">
-							O Índice de Saúde Financeira do Brasileiro, desenvolvido pela <span className="font-bold text-[var(--purple)]">FEBRABAN</span>, ajuda você a entender melhor sua relação com o dinheiro e a identificar pontos importantes para melhorar.
+							O Índice de Saúde Financeira do Brasileiro, desenvolvido pela FEBRABAN, ajuda você a entender melhor sua relação com o dinheiro e a identificar pontos importantes para melhorar.
 						</p>
 
 						<p className="text-[14px] font-semibold leading-[18px] text-[#000416] md:text-[16px] md:leading-[21px] lg:leading-[28px] xl:text-[18px] xl:leading-[32px]">

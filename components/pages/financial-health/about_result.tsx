@@ -6,10 +6,10 @@ import { FaRegSadCry } from "react-icons/fa";
 
 const data = {
     h2: "Entenda o seu **resultado**",
-    p: "O Índice de Saúde Financeira do Brasileiro é uma ferramenta desenvolvida pela **FEBRABAN**, que ajuda você a entender melhor sua relação com o dinheiro.",
+    p: "O Índice de Saúde Financeira do Brasileiro é uma ferramenta desenvolvida pela FEBRABAN, que ajuda você a entender melhor sua relação com o dinheiro.",
     pbold: "Confira abaixo o que significa cada faixa do seu resultado:",
-    lowp1: "Conhecer o significado do seu resultado é o primeiro passo para **transformar sua vida financeira.**",
-    lowp2: "Agora, descubra como evoluir e **conquistar seus objetivos!**",
+    lowp1: "Conhecer o significado do seu resultado é o primeiro passo para transformar sua vida financeira.",
+    lowp2: "Agora, descubra como evoluir e conquistar seus objetivos!",
     cards: [
         {
             number: "83-100",
@@ -81,7 +81,7 @@ export function AboutResult() {
         <div className="w-full px-4 py-3 sm:px-6 lg:px-8 lg:py-10 xl:px-10">
             <section className="w-full max-w-[1440px] mx-auto mt-12">
                 <div>
-                    <div className="text-primary bg-[#E1D6FE] w-fit py-[6px] px-[12px] rounded-[10px] font-bold text-sm mb-4">
+                    <div className="text-[20px] xl:text-[24px] font-bold gradient-text whitespace-nowrap uppercase mb-2">
                         {renderHighlightedText(data.h2)}
                     </div>
                     
@@ -91,7 +91,7 @@ export function AboutResult() {
                     
                     <div className="w-[40px] h-[5px] my-5 bg-gradient-to-r from-primary to-secondary rounded-[10px]" />
                     
-                    <p className="w-full lg:w-1/2 text-base sm:text-lg mb-2 text-foreground/80 leading-relaxed">
+                    <p className="w-full text-base sm:text-lg mb-2 text-foreground/80 leading-relaxed">
                         {renderHighlightedText(data.p)}
                     </p>
                     

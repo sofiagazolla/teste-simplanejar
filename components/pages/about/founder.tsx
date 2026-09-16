@@ -235,7 +235,7 @@ export default function Founder() {
           </div>
         </div>
         <div className="flex-1 min-w-0 flex flex-col gap-4">
-          <h1 className="self-start text-[24px] sm:text-[28px] md:text-[36px] xl:text-[48px] font-extrabold ">
+          <h1 className="self-start text-[24px] sm:text-[28px] md:text-[36px] xl:text-[48px] font-extrabold leading-tight">
             {titles.main.t1} <span className="text-[#7C4DFF]">{titles.main.t2}</span>
           </h1>
           <h2 className="font-extrabold text-[30px] xl:text-[40px] text-[#7C4DFF] mt-1 leading-tight">{titles.name}</h2>

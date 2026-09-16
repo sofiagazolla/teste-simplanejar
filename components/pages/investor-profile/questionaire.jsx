@@ -47,7 +47,7 @@ const secondText = {
 
 const box = {
     titles: {
-        t1: "7 perguntas rápidas",
+        t1: "7 perguntas",
         t2: "Resultado imediato",
         t3: "100% gratuito",
         t4: "Educacional"
@@ -60,7 +60,7 @@ const box = {
     }
 };
 
-const button = "Fazer o teste";
+const button = "FAZER O TESTE";
 
 export function Box() {
     return (
@@ -150,8 +150,8 @@ export default function Questionaire() {
 
                     {/* botão desktop */}
                     <div className="font-bold hidden md:block mt-4">
-                        <Link href="/suitability/form" className="w-full md:w-fit md:max-w-[320px] flex flex-row justify-center items-center gap-3 py-3.5 px-8 border-none cursor-pointer rounded-xl bg-[#7C4DFF] text-white transition-colors duration-300 ease-in-out hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200">
-                            <Image src={Alvo} alt={imageAlt.alvoAlt} className="w-6 h-6 object-contain" />
+                        <Link href="/suitability/form" className="w-full md:w-fit md:max-w-[360px] flex flex-row justify-center items-center gap-3 py-5 px-10 text-lg border-none cursor-pointer rounded-xl bg-[#7C4DFF] text-white transition-colors duration-300 ease-in-out hover:bg-[#6939E8] hover:shadow-xl hover:scale-105 transition-all duration-200">
+                            <Image src={Alvo} alt={imageAlt.alvoAlt} className="w-7 h-7 object-contain" />
                             {button}
                         </Link>
                     </div>
