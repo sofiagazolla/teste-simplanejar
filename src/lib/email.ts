@@ -128,7 +128,7 @@ export function enviarEmail<T extends FormType>({
         onSuccess?.();
       },
       (error: EmailJSResponseStatus) => {
-        console.error("FAILED...", error.text);
+        console.error("FAILED...", error);
         toast.error(mensagens.error, toastOptions);
         onError?.(error);
       }
