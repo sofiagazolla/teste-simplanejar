@@ -76,7 +76,7 @@ export default function BookSection() {
 					</div>
 
 					<div className="hidden lg:flex lg:col-span-5 xl:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-4 lg:justify-end">
-						<Image src="/dreams-simulator/mosaic-desktop.svg" alt="Mosaico com imagens de conquistas e momentos em família: mulher tomando café, pai estudando com a filha, casa própria amarela, estudante com mochila, mulher trabalhando no notebook e família unida em um parque" width={620} height={889} className="h-auto w-full max-h-[889px] object-contain rounded-2xl" />
+						<Image src="/dreams-simulator/mosaic-desktop.png" alt="Mosaico com imagens de conquistas e momentos em família: mulher tomando café, pai estudando com a filha, casa própria amarela, estudante com mochila e mulher trabalhando no notebook." width={620} height={889} className="h-auto w-full max-h-[889px] object-contain rounded-2xl" />
 					</div>
 				</div>
 			</div>

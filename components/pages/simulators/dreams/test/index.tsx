@@ -110,8 +110,8 @@ export default function SonhosSimulator() {
 
 	const chartData = chartPoints.map(m => ({
 		label: m === 0 ? "Início" : `${m} meses`,
-		"Valor acumulado": Math.round(calcFV(existing, monthlyNeeded, r, m)),
-		"Valor necessário": totalValue,
+		"Quanto você vai acumular": Math.round(calcFV(existing, monthlyNeeded, r, m)),
+		"Valor do seu sonho ou projeto": totalValue,
 	}));
 
 	const dreamLabel = form.dreamName || DREAM_LABEL[form.dreamType] || "seu sonho";
@@ -203,6 +203,13 @@ export default function SonhosSimulator() {
 								grid-template-rows: repeat(4, auto);
 								grid-template-areas:
 									"name type"
+									"value return"
+									"period return"
+									"existing return";
+							}
+							.dream-grid.dream-grid--expanded {
+								grid-template-areas:
+									"name type"
 									"value type"
 									"period return"
 									"existing return";
@@ -210,7 +217,7 @@ export default function SonhosSimulator() {
 						}
 					`}</style>
 
-					<div className="dream-grid grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+					<div className={`dream-grid grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 ${form.dreamType === "Outro" ? "dream-grid--expanded" : ""}`}>
 						<div style={{ gridArea: "name" }}>
 							<label className="mb-2 block text-[18px] font-semibold text-white">1. Qual é o seu nome?</label>
 							<div className={`flex items-center px-4 py-3.5 ${inputContainerStyle}`}>
@@ -236,7 +243,7 @@ export default function SonhosSimulator() {
 								)}
 							</div>
 
-							<div className="mt-3 rounded-2xl border border-[#455790] bg-[#20357A] p-4 text-white">
+							<div className={`${form.dreamType == "Outro" ? "block" : "hidden"} mt-3 rounded-2xl border border-[#455790] bg-[#20357A] p-4 text-white`}>
 								<label className="mb-2 block text-[16px] font-medium text-white">Identifique o seu sonho ou projeto</label>
 								<input type="text" placeholder="Digite aqui o seu sonho ou projeto" value={form.dreamName} onChange={e => f("dreamName", e.target.value)} className={`w-full px-4 py-3 ${inputContainerStyle} text-[16px] placeholder-gray-400 focus:outline-none`} />
 							</div>
@@ -286,23 +293,23 @@ export default function SonhosSimulator() {
 						<div style={{ gridArea: "return" }}>
 							<label className="mb-2 block text-[18px] font-semibold text-white">6. Rentabilidade esperada (ao ano)</label>
 							<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-								<button type="button" onClick={() => f("returnType", "poupanca")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "poupanca" ? "border-[#7C4DFF] bg-[#20357A] shadow-lg shadow-[#7C4DFF]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
-									<div className="mb-3 flex items-center gap-2">
+								<button type="button" onClick={() => f("returnType", "poupanca")} className={`flex flex-col relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "poupanca" ? "border-[#7C4DFF] bg-[#20357A] shadow-lg shadow-[#7C4DFF]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
+									<div className="mb-3 flex items-center gap-2 self-start">
 										<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "poupanca" ? "border-[#7C4DFF]" : "border-gray-500"}`}>{form.returnType === "poupanca" && <div className="h-2.5 w-2.5 rounded-full bg-[#7C4DFF]" />}</div>
 										<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><PiggyBank className="h-5 w-5 text-[#2ED8E8]" /></div>
 									</div>
-									<div className="mb-1 text-[16px] font-bold text-white">Rentabilidade da poupança</div>
-									<p className="mb-3 text-[16px] leading-snug text-white">Usar rentabilidade média da poupança na simulação.</p>
+									<div className="mb-1 text-[16px] font-bold text-white">Rentabilidade de referência</div>
+									<p className="mb-3 text-[16px] leading-snug text-white">Use a rentabilidade de referência adotada pelo simulador.</p>
 									<div className="text-[16px] font-bold text-[#2ED8E8]">{POUPANCA_RATE_AA}% a.a.*</div>
 								</button>
 
-								<button type="button" onClick={() => f("returnType", "custom")} className={`relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "custom" ? "border-[#2ED8E8] bg-[#20357A] shadow-lg shadow-[#2ED8E8]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
-									<div className="mb-3 flex items-center gap-2">
+								<button type="button" onClick={() => f("returnType", "custom")} className={`flex flex-col relative rounded-2xl border p-4 text-left transition-all ${form.returnType === "custom" ? "border-[#2ED8E8] bg-[#20357A] shadow-lg shadow-[#2ED8E8]/10" : "border-[#455790] bg-[#20357A]/60"}`}>
+									<div className="mb-3 flex items-center gap-2 self-start">
 										<div className={`flex h-5 w-5 items-center justify-center rounded-full border ${form.returnType === "custom" ? "border-[#2ED8E8]" : "border-gray-500"}`}>{form.returnType === "custom" && <div className="h-2.5 w-2.5 rounded-full bg-[#2ED8E8]" />}</div>
 										<div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10"><TrendingUp className="h-5 w-5 text-[#2ED8E8]" /></div>
 									</div>
-									<div className="mb-1 text-[16px] font-bold text-white">Informar outra rentabilidade</div>
-									<p className="mb-3 text-[16px] leading-snug text-white">Digite a rentabilidade anual que você deseja obter.</p>
+									<div className="mb-1 text-[16px] font-bold text-white">Informar outra taxa</div>
+									<p className="mb-3 text-[16px] leading-snug text-white">Digite a rentabilidade anual que você deseja considerar na simulação.</p>
 									<div className="flex items-center gap-2">
 										<input type="text" inputMode="decimal" value={form.customReturn} onChange={e => f("customReturn", e.target.value.replace(/[^0-9,.]/g, ""))} placeholder="0.00" className="w-20 rounded-lg border border-[#455790] bg-[#20357A] px-2 py-1.5 text-center text-[16px] text-white focus:outline-none" />
 										<span className="text-[16px] font-semibold text-white">% a.a.</span>
@@ -313,11 +320,11 @@ export default function SonhosSimulator() {
 					</div>
 
 					<button onClick={() => canCalculate && setShowResults(true)} className={`mt-8 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-[18px] font-bold transition-all ${canCalculate ? "cursor-pointer bg-[#7C4DFF] text-white shadow-lg shadow-[#7C4DFF]/25 hover:bg-[#8e00e6]" : "cursor-not-allowed bg-[#21246d] text-gray-400"}`}>
-						<Calendar className="h-6 w-6" />
-						<span>Calcule o seu sonho ou projeto</span>
+						<Calendar className="h-7 w-7" />
+						<span>SIMULE SEU SONHO OU PROJETO</span>
 					</button>
 
-					<p className="mt-4 text-[16px] text-white">* A rentabilidade utilizada é apenas uma referência para fins de simulação e não representa garantia de retorno.</p>
+					<p className="mt-4 text-[16px] text-white">* A rentabilidade indicada é apenas uma referência para a simulação e não garante resultados futuros.</p>
 				</div>
 			</div>
 
@@ -335,7 +342,7 @@ export default function SonhosSimulator() {
 								<h3 className="mb-2 text-2xl font-extrabold text-[#0c1440] md:text-3xl">
 									{form.name ? <><span className="text-[#7C4DFF]">{form.name}</span>, este é</> : "Este é"} o plano para conquistar <span className="text-[#01AEAA]">{dreamLabel}!</span>
 								</h3>
-								<p className="text-xs font-semibold text-[#3b4371] md:text-sm">Confira quanto você precisa poupar mensalmente para realizar seu sonho.</p>
+								<p className="font-bold text-[#3b4371] md:text-[18px]">Confira quanto você precisa poupar mensalmente para realizar seu sonho.</p>
 							</div>
 
 							<div className="mb-8 rounded-3xl border border-[#f0ebfe] bg-[#F7F6FE] p-6">
@@ -343,7 +350,7 @@ export default function SonhosSimulator() {
 									<div className="flex min-w-max flex-1 items-center gap-3 pr-4 border-gray-200/60 md:border-r">
 										<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ECE7FE]"><Smile className="h-5 w-5 text-[#7C4DFF]" /></div>
 										<div>
-											<div className="whitespace-nowrap text-xs font-semibold text-[#525a86]">Valor mensal necessário</div>
+											<div className="whitespace-nowrap font-semibold text-[#525a86]">Valor mensal necessário</div>
 											<div className="whitespace-nowrap text-[20px] font-extrabold text-[#7C4DFF]">{formatBRL(monthlyNeeded)}</div>
 										</div>
 									</div>
@@ -351,7 +358,7 @@ export default function SonhosSimulator() {
 									<div className="flex min-w-max flex-1 items-center gap-3 border-t border-gray-200/60 px-0 pt-4 md:border-r md:border-t-0 md:px-4 md:pt-0">
 										<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ECE7FE]"><Calendar className="h-5 w-5 text-[#7C4DFF]" /></div>
 										<div>
-											<div className="whitespace-nowrap text-xs font-semibold text-[#525a86]">Durante</div>
+											<div className="whitespace-nowrap font-semibold text-[#525a86]">Durante</div>
 											<div className="whitespace-nowrap text-[20px] font-extrabold text-[#7C4DFF]">{months} meses</div>
 										</div>
 									</div>
@@ -359,7 +366,7 @@ export default function SonhosSimulator() {
 									<div className="flex min-w-max flex-1 items-center gap-3 border-t border-gray-200/60 px-0 pt-4 md:border-r md:border-t-0 md:px-4 md:pt-0">
 										<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e3fcf7]"><Target className="h-5 w-5 text-[#01AEAA]" /></div>
 										<div>
-											<div className="whitespace-nowrap text-xs font-semibold text-[#525a86]">Para alcançar</div>
+											<div className="whitespace-nowrap font-semibold text-[#525a86]">Para alcançar</div>
 											<div className="whitespace-nowrap text-[20px] font-extrabold text-[#01AEAA]">{formatBRL(totalValue)}</div>
 										</div>
 									</div>
@@ -367,15 +374,15 @@ export default function SonhosSimulator() {
 									<div className="flex min-w-max flex-1 items-center gap-3 border-t border-gray-200/60 pl-0 pt-4 md:border-t-0 md:pl-4 md:pt-0">
 										<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e3fcf7]"><PiggyBank className="h-5 w-5 text-[#01AEAA]" /></div>
 										<div>
-											<div className="whitespace-nowrap text-xs font-semibold text-[#525a86]">Você já possui</div>
+											<div className="whitespace-nowrap font-semibold text-[#525a86]">Você já possui</div>
 											<div className="whitespace-nowrap text-[20px] font-extrabold text-[#01AEAA]">{formatBRL(existing)}</div>
 										</div>
 									</div>
 								</div>
 
 								<div className="mt-6 flex items-center justify-center gap-1.5 border-t border-gray-200/50 pt-4 text-xs text-[#3b4371]">
-									<span className="font-bold">Rentabilidade considerada:</span>
-									<span>{form.returnType === "poupanca" ? `Poupança (${POUPANCA_RATE_AA}% a.a.)` : `${annualReturn}% a.a.`}</span>
+									<span className="font-bold">Rentabilidade anual considerada na simulação:</span>
+									<span>{form.returnType === "poupanca" ? `${POUPANCA_RATE_AA}% a.a.` : `${annualReturn}% a.a.`}</span>
 									<HelpCircle className="h-3.5 w-3.5 cursor-pointer text-gray-400" />
 								</div>
 							</div>
@@ -396,8 +403,8 @@ export default function SonhosSimulator() {
 										<YAxis tickFormatter={v => (v === 0 ? "R$ 0" : `R$ ${(v / 1000).toFixed(0)} mil`)} tick={{ fontSize: 11, fill: "#525a86" }} tickLine={false} axisLine={false} width={90} />
 										<Tooltip formatter={(v, name) => [formatBRL(Number(v || 0)), name]} contentStyle={{ borderRadius: "12px", border: "1px solid #f0ebfe", fontSize: "12px" }} />
 										<Legend iconType="plainline" formatter={value => <span style={{ color: "#3b4371", fontSize: "12px", fontWeight: 600 }}>{value}</span>} wrapperStyle={{ paddingBottom: "12px" }} />
-										<Area type="monotone" dataKey="Valor acumulado" stroke="#7C4DFF" strokeWidth={2.5} fill="url(#dreamAreaGrad)" dot={{ r: 4, fill: "#7C4DFF", stroke: "#fff", strokeWidth: 2 }} activeDot={{ r: 6, fill: "#7C4DFF", stroke: "#fff", strokeWidth: 2 }} />
-										<Area type="monotone" dataKey="Valor necessário" stroke="#01AEAA" strokeWidth={2} strokeDasharray="5 5" fill="none" dot={(props: any) => (props.index === chartData.length - 1 ? <circle key={props.index} cx={props.cx} cy={props.cy} r={5} fill="#01AEAA" stroke="#fff" strokeWidth={2} /> : null)} activeDot={{ r: 6, fill: "#01AEAA", stroke: "#fff", strokeWidth: 2 }} />
+										<Area type="monotone" dataKey="Quanto você vai acumular" stroke="#7C4DFF" strokeWidth={2.5} fill="url(#dreamAreaGrad)" dot={{ r: 4, fill: "#7C4DFF", stroke: "#fff", strokeWidth: 2 }} activeDot={{ r: 6, fill: "#7C4DFF", stroke: "#fff", strokeWidth: 2 }} />
+										<Area type="monotone" dataKey="Valor do seu sonho ou projeto" stroke="#01AEAA" strokeWidth={2} strokeDasharray="5 5" fill="none" dot={(props: any) => (props.index === chartData.length - 1 ? <circle key={props.index} cx={props.cx} cy={props.cy} r={5} fill="#01AEAA" stroke="#fff" strokeWidth={2} /> : null)} activeDot={{ r: 6, fill: "#01AEAA", stroke: "#fff", strokeWidth: 2 }} />
 									</AreaChart>
 								</ResponsiveContainer>
 							</div>
@@ -407,19 +414,20 @@ export default function SonhosSimulator() {
 									Você precisa poupar <span className="text-[20px] font-extrabold text-[#7C4DFF]">{formatBRL(monthlyNeeded)}</span> mensais, durante <span className="text-[20px] font-extrabold text-[#01AEAA]">{months} meses</span>, para realizar seu sonho ou projeto.
 								</p>
 								<div className="mt-2 flex items-center justify-center gap-1 text-[11px] text-[#525a86]">
-									<span>Os valores exibidos são brutos e não consideram a inflação.</span>
-									<HelpCircle className="h-3.5 w-3.5 text-gray-400" />
+									<span>A rentabilidade indicada é apenas uma referência para a simulação e não garante resultados futuros. Os resultados apresentados são brutos.</span>
 								</div>
 							</div>
 
-							<form onSubmit={handleSendEmail} className="flex flex-col items-center gap-4 rounded-3xl border border-gray-100 bg-white p-5 shadow-sm md:flex-row">
-								<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ECE7FE]"><Mail className="h-6 w-6 text-[#7C4DFF]" /></div>
-								<div className="flex-1 text-xs text-[#3b4371] md:text-sm">
-									<span className="font-bold text-[#7C4DFF]">Bônus:</span> você pode enviar sua simulação por e-mail e guardar o plano para acompanhar sempre que quiser.
+							<form onSubmit={handleSendEmail} className="flex flex-col items-center gap-4 rounded-3xl border border-gray-100 bg-white p-5 shadow-sm ">
+								<div className="flex items-center gap-4">
+									<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ECE7FE]"><Mail className="h-6 w-6 text-[#7C4DFF]" /></div>
+									<div className="flex-1 text-[#3b4371]">
+										<span className="font-bold text-[#7C4DFF]">Bônus:</span> você pode enviar sua simulação por e-mail e guardar o plano para acompanhar sempre que quiser.
+									</div>	
 								</div>
 								<div className="flex w-full flex-col gap-2 sm:flex-row md:w-auto">
-									<input type="email" required placeholder="Digite seu e-mail" value={email} onChange={e => setEmail(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-xs text-[#0c1440] placeholder-gray-400 focus:outline-none sm:w-56 md:text-sm" />
-									<button type="submit" disabled={isSending} className="flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-[#7C4DFF] px-5 py-2.5 text-xs font-bold text-[#7C4DFF] transition-colors hover:bg-[#7C4DFF] hover:text-white disabled:opacity-50 md:text-sm">
+									<input type="email" required placeholder="Digite seu e-mail" value={email} onChange={e => setEmail(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-[#0c1440] placeholder-gray-400 focus:outline-none sm:w-100" />
+									<button type="submit" disabled={isSending} className="flex cursor-pointer items-center justify-center gap-2  rounded-xl border border-[#7C4DFF] px-5 py-2.5 font-bold text-[#7C4DFF] transition-colors hover:bg-[#7C4DFF] hover:text-white disabled:opacity-50">
 										{isSending ? (
 											<>
 												<Loader2 className="h-4 w-4 animate-spin" />
@@ -427,7 +435,7 @@ export default function SonhosSimulator() {
 											</>
 										) : (
 											<>
-												<Mail className="h-4 w-4" />
+												<Mail className="h-6 w-6" />
 												<span>Enviar resultado para meu e-mail</span>
 											</>
 										)}

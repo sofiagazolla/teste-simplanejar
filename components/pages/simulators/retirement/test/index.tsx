@@ -242,7 +242,6 @@ export default function Simulator() {
     <div id='#simulador' className="min-h-screen bg-background text-foreground font-sans relative overflow-hidden">
       <section id="simulador" className="max-w-4xl mx-auto text-center px-4 sm:px-6 pt-6 pb-6 lg:mt-8">
         <div className="inline-flex items-center gap-2 text-[#7343E0] text-sm sm:text-base font-extrabold tracking-wide uppercase mb-2">
-          <IconMenu />
           <span className="bg-gradient-to-r from-violet-500 to-cyan-400 bg-clip-text text-transparent">SIMULADOR DE RESERVA PARA APOSENTADORIA</span>
         </div>
         <h2 className="text-2xl sm:text-4xl font-bold leading-tight sm:leading-10 text-foreground">
@@ -346,11 +345,11 @@ export default function Simulator() {
                       {form.rentabilityType === 'poupanca' && <span className="w-2.5 h-2.5 rounded-full bg-primary" />}
                     </span>
                     <input type="radio" value="poupanca" checked={form.rentabilityType === 'poupanca'} onChange={() => updateField('rentabilityType', 'poupanca')} className="sr-only" />
-                    Utilizar rendimento médio da poupança
+                    Utilizar rentabilidade de referência
                   </label>
                   <div className="bg-[#F2F0FD] border border-[#E2DDFF] p-3 rounded-xl text-center">
                     <span className="block text-[#7343E0] font-bold text-base">{POUPANCA_RATE_AA}% a.a.</span>
-                    <span className="text-[13px] font-normal text-black">Rendimento da poupança (média)</span>
+                    <span className="text-[13px] font-normal text-black">Use a rentabilidade de referência adotada pelo simulador.</span>
                   </div>
                 </div>
 
@@ -370,7 +369,7 @@ export default function Simulator() {
             </div>
                             <p className="flex items-start gap-1.5 text-xs sm:text-sm font-normal text-[#737373]">
                 <IconSafe className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                A rentabilidade utilizada é apenas uma estimativa para fins de simulação e não apresenta garantia de retorno.
+                A rentabilidade indicada é apenas uma referência para a simulação e não garante resultados futuros.
               </p>
               </div>
             <button type="submit" disabled={!canCalculate} className={`w-full font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-base ${canCalculate ? "bg-primary hover:bg-[#7343E0] text-white shadow-violet-200" : "bg-[#F2F0FD] text-gray-400 cursor-not-allowed"}`}>
@@ -436,27 +435,27 @@ export default function Simulator() {
 
                   <p className="text-sm text-slate-600 font-medium leading-relaxed">
                     {isOnTrack 
-                      ? <>Com os valores informados, sua projeção indica que você conseguirá gerar aproximadamente <span className="text-[#7C4DFF] font-bold">{formatBRL(estimatedIncome)} por mês</span> na aposentadoria durante {yearsReceiving} anos.</>
+                      ? <>Com os valores informados, sua projeção indica que você conseguirá gerar aproximadamente <span className="text-[#7C4DFF] font-bold">{`${formatBRL(estimatedIncome)},00`} por mês</span> na aposentadoria durante {yearsReceiving} anos.</>
                       : <>Sua projeção está próxima da renda desejada. Pequenos ajustes no valor investido, no prazo ou na rentabilidade considerada podem aproximar você do objetivo.</>}
                       {isFar && <>Com os valores informados, o patrimônio estimado não será suficiente para gerar a renda mensal desejada.</>}
                   </p>
                 </div>
 
                 <div className="lg:w-[55%] flex flex-col sm:flex-row w-full bg-white border border-[#E2DDFF] rounded-2xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-[#E2DDFF]">
-                  <div className="flex-1 p-6 flex flex-col items-center text-center">
+                  <div className="flex-1 p-4 flex flex-col items-center text-center">
                     <Image src={savings} alt="" className="w-14 h-14 mb-3" />
                     <span className="text-xs font-bold text-[#00194E] mb-1">Patrimônio estimado na aposentadoria</span>
-                    <span className="text-xl font-extrabold text-[#7C4DFF]">{formatBRL(estimatedReserve)}</span>
+                    <span className="text-xl font-extrabold text-[#7C4DFF]">{`${formatBRL(estimatedReserve)},00`}</span>
                   </div>
-                  <div className="flex-1 p-6 flex flex-col items-center text-center">
+                  <div className="flex-1 p-4 flex flex-col items-center text-center">
                     <Image src={wallet} alt="" className="w-14 h-14 mb-3" />
                     <span className="text-xs font-bold text-[#00194E] mb-1">Renda mensal estimada na aposentadoria</span>
-                    <span className="text-xl font-extrabold text-[#7C4DFF]">{formatBRL(estimatedIncome)}</span>
+                    <span className="text-xl font-extrabold text-[#7C4DFF]">{`${formatBRL(estimatedIncome)},00`}</span>
                   </div>
-                  <div className="flex-1 p-6 flex flex-col items-center text-center">
+                  <div className="flex-1 p-4 flex flex-col items-center text-center">
                     <Image src={targetIcon} alt="" className="w-14 h-14 mb-3" />
                     <span className="text-xs font-bold text-[#00194E] mb-1">Sua meta de renda mensal na aposentadoria</span>
-                    <span className="text-xl font-extrabold text-[#7C4DFF]">{formatBRL(desiredIncome)}</span>
+                    <span className="text-xl font-extrabold text-[#7C4DFF]">{`${formatBRL(desiredIncome)},00`}</span>
                   </div>
                 </div>
               </div>
@@ -515,7 +514,7 @@ export default function Simulator() {
                 ) : (!isOnTrack && (
                   <div className="hidden sm:block absolute bottom-12 right-6 bg-white border border-[#E2DDFF] shadow-lg rounded-xl py-2 px-5 text-center pointer-events-none">
                     <span className="block text-[11px] font-semibold text-slate-500 mb-0.5">Déficit estimado:</span>
-                    <span className="block text-sm font-extrabold text-[#D93B3B]">{formatBRL(deficit)}</span>
+                    <span className="block text-sm font-extrabold text-[#D93B3B]">{`${formatBRL(deficit)},00`}</span>
                   </div>
                 ))}
               </div>
@@ -526,35 +525,31 @@ export default function Simulator() {
               <div className="flex flex-col lg:flex-row gap-6 lg:items-center">
                 <div className="lg:w-[25%]">
                   <h4 className="text-lg font-bold text-[#00194E]">Comparativo de cenários</h4>
-                  <p className="text-sm text-slate-600 font-medium mt-1">Mesmo investimento mensal de <span className="font-bold text-[#7C4DFF]">{formatBRL(monthlyInvestment)}</span></p>
+                  <p className="text-sm text-slate-600 font-medium mt-1">Mesmo investimento mensal de <span className="font-bold text-[#7C4DFF]">{`${formatBRL(monthlyInvestment)},00`}</span></p>
                 </div>
                 
                 <div className="lg:w-[75%] grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-[#F9F8FF] rounded-2xl p-5 flex items-start gap-4">
-                    <Image src={savings} alt="" className="w-12 h-12 flex-shrink-0" />
-                    <div>
+                  <div className="bg-[#F9F8FF] rounded-2xl p-5 flex flex-col items-start">
+                    <Image src={savings} alt="" className="w-12 h-12 flex-shrink-0 mb-4" />
                       <span className="block text-xs font-bold text-[#00194E]">Cenário 1</span>
-                      <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade média da poupança (6,5% a.a.)</span>
-                      <span className="block text-lg font-extrabold text-[#7C4DFF]">{formatBRL(patrimonioPoupanca)}</span>
-                    </div>
+                      <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade de referência adotada pelo simulador (6,5% a.a.)</span>
+                      <span className="block text-lg font-extrabold text-[#7C4DFF]">{`${formatBRL(patrimonioPoupanca)},00`}</span>
+                    
                   </div>
 
-                  <div className="bg-[#F4F9FF] rounded-2xl p-5 flex items-start gap-4">
-                    <Image src={stocksBlue} alt="" className="w-12 h-12 flex-shrink-0" />
-                    <div>
+                  <div className="bg-[#F4F9FF] rounded-2xl p-5 flex flex-col items-start">
+                    <Image src={stocksBlue} alt="" className="w-12 h-12 flex-shrink-0 mb-4" />
                       <span className="block text-xs font-bold text-[#00194E]">Cenário 2</span>
                       <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade informada ({compareRateAA}% a.a.)</span>
-                      <span className="block text-lg font-extrabold text-[#3B82F6]">{formatBRL(patrimonioCompare)}</span>
-                    </div>
+                      <span className="block text-lg font-extrabold text-[#3B82F6]">{`${formatBRL(patrimonioCompare)},00`}</span>
+                    
                   </div>
 
-                  <div className="bg-[#F0FDF8] rounded-2xl p-5 flex items-start gap-4">
-                    <div className="bg-[#CCFBF1] p-3 rounded-full flex-shrink-0"><ArrowRightLeft className="w-5 h-5 text-[#01AEAA]" /></div>
-                    <div>
+                  <div className="bg-[#F0FDF8] rounded-2xl p-5 flex flex-col items-start">
+                    <div className="bg-[#CCFBF1] p-3 rounded-full flex-shrink-0 mb-4"><ArrowRightLeft className="w-5 h-5 text-[#01AEAA]" /></div>
                       <span className="block text-xs font-bold text-[#00194E]">Diferença acumulada</span>
-                      <span className="block text-lg font-extrabold text-[#01AEAA]">+ {formatBRL(diferencaCenarios)}</span>
+                      <span className="block text-lg font-extrabold text-[#01AEAA]">+ {`${formatBRL(diferencaCenarios)},00`}</span>
                       <span className="block text-[10px] text-slate-500 leading-tight mt-1">Diferença no patrimônio estimado entre os cenários</span>
-                    </div>
                   </div>
                 </div>
               </div>

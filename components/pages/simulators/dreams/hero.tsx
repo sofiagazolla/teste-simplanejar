@@ -22,7 +22,7 @@ export default function Hero() {
 
 							<div className="mt-5 space-y-4 lg:mt-8 lg:space-y-2 xl:space-y-3">
 								<p className="w-full max-w-[530px] text-[16px] font-semibold leading-[18px] text-[#000416] md:text-[18px] md:leading-[21px] lg:leading-[28px] xl:text-[20px] xl:leading-[32px]">
-									Casa própria, carro, viagem, intercâmbio, negócio próprio ou qualquer outro sonho importante...
+									Casa própria, carro, viagem, intercâmbio, negócio próprio ou qualquer outro sonho importante.
 								</p>
 
 								<p className="w-full max-w-[530px] text-[16px] font-semibold leading-[18px] text-[#000416] md:text-[18px] md:leading-[21px] lg:leading-[28px] xl:text-[20px] xl:leading-[32px]">
@@ -35,9 +35,9 @@ export default function Hero() {
 							</div>
 
 							{/* substituir o # pelo caminho certo, não consegui fazer isso funcionar :( */}
-							<Link href="de-sonhos-e-projetos/form" className="mt-3 flex h-[59px] w-full sm:max-w-[250px] cursor-pointer items-center justify-center gap-4 rounded-[10px] bg-[var(--purple)] font-bold text-white hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 ">
-								<p className="text-[16px]">Acessar o simulador</p>
-								<FaArrowRight className="text-[16px]" />
+							<Link href="de-sonhos-e-projetos/form" className="mt-3 flex w-fit cursor-pointer items-center justify-center gap-4 rounded-[10px] bg-[var(--purple)] font-extrabold text-white hover:bg-[#6939E8] hover:shadow-lg transition-all duration-200 py-4 px-8">
+								<p className="text-[18px]">ACESSAR O SIMULADOR</p>
+								<FaArrowRight className="text-[18px]" />
 							</Link>
 						</div>
 
