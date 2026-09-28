@@ -140,7 +140,7 @@ export default function SonhosSimulator() {
             months,
             totalValue: formatBRL(totalValue),
             existingValue: formatBRL(existing),
-            returnRate: form.returnType === "poupanca" ? `Poupança (${POUPANCA_RATE_AA}% a.a.)` : `${annualReturn}% a.a.`,
+            returnRate: form.returnType === "poupanca" ? `${POUPANCA_RATE_AA}% a.a.` : `${annualReturn}% a.a.`,
         },
         extraParams: { to_email: email }, 
         mensagens: {

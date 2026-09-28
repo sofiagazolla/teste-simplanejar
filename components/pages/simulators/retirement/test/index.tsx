@@ -161,8 +161,11 @@ export default function Simulator() {
   // Comparativos
   const rPoupanca = monthlyRate(POUPANCA_RATE_AA);
   const patrimonioPoupanca = calcFV(currentReserve, monthlyInvestment, rPoupanca, monthsAccumulating);
-  
-  const compareRateAA = form.rentabilityType === 'poupanca' ? 10 : annualReturn;
+
+  // O Cenário 2 (rentabilidade informada) só existe se o usuário de fato escolheu
+  // "outro" e preencheu o campo de rentabilidade customizada.
+  const hasCustomRate = form.rentabilityType === 'outro' && form.customRate.trim() !== '';
+  const compareRateAA = annualReturn;
   const rCompare = monthlyRate(compareRateAA);
   const patrimonioCompare = calcFV(currentReserve, monthlyInvestment, rCompare, monthsAccumulating);
   const diferencaCenarios = Math.abs(patrimonioCompare - patrimonioPoupanca);
@@ -200,7 +203,7 @@ export default function Simulator() {
       rendaDesejada: formatBRL(desiredIncome),
       patrimonioEstimado: formatBRL(estimatedReserve),
       rendaEstimada: formatBRL(estimatedIncome),
-      taxaConsiderada: form.rentabilityType === "poupanca" ? `Poupança (${POUPANCA_RATE_AA}% a.a.)` : `${annualReturn}% a.a.`,
+      taxaConsiderada: form.rentabilityType === "poupanca" ? `${POUPANCA_RATE_AA}% a.a.` : `${annualReturn}% a.a.`,
     },
     extraParams: { to_email: email }, 
     mensagens: {
@@ -528,29 +531,33 @@ export default function Simulator() {
                   <p className="text-sm text-slate-600 font-medium mt-1">Mesmo investimento mensal de <span className="font-bold text-[#7C4DFF]">{`${formatBRL(monthlyInvestment)},00`}</span></p>
                 </div>
                 
-                <div className="lg:w-[75%] grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className={`lg:w-[75%] grid grid-cols-1 gap-4 ${hasCustomRate ? 'md:grid-cols-3' : 'md:grid-cols-1'}`}>
                   <div className="bg-[#F9F8FF] rounded-2xl p-5 flex flex-col items-start">
                     <Image src={savings} alt="" className="w-12 h-12 flex-shrink-0 mb-4" />
                       <span className="block text-xs font-bold text-[#00194E]">Cenário 1</span>
                       <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade de referência adotada pelo simulador (6,5% a.a.)</span>
                       <span className="block text-lg font-extrabold text-[#7C4DFF]">{`${formatBRL(patrimonioPoupanca)},00`}</span>
-                    
+
                   </div>
 
-                  <div className="bg-[#F4F9FF] rounded-2xl p-5 flex flex-col items-start">
-                    <Image src={stocksBlue} alt="" className="w-12 h-12 flex-shrink-0 mb-4" />
-                      <span className="block text-xs font-bold text-[#00194E]">Cenário 2</span>
-                      <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade informada ({compareRateAA}% a.a.)</span>
-                      <span className="block text-lg font-extrabold text-[#3B82F6]">{`${formatBRL(patrimonioCompare)},00`}</span>
-                    
-                  </div>
+                  {hasCustomRate && (
+                    <>
+                      <div className="bg-[#F4F9FF] rounded-2xl p-5 flex flex-col items-start">
+                        <Image src={stocksBlue} alt="" className="w-12 h-12 flex-shrink-0 mb-4" />
+                          <span className="block text-xs font-bold text-[#00194E]">Cenário 2</span>
+                          <span className="block text-[11px] text-slate-500 mb-1">Rentabilidade informada ({compareRateAA}% a.a.)</span>
+                          <span className="block text-lg font-extrabold text-[#3B82F6]">{`${formatBRL(patrimonioCompare)},00`}</span>
 
-                  <div className="bg-[#F0FDF8] rounded-2xl p-5 flex flex-col items-start">
-                    <div className="bg-[#CCFBF1] p-3 rounded-full flex-shrink-0 mb-4"><ArrowRightLeft className="w-5 h-5 text-[#01AEAA]" /></div>
-                      <span className="block text-xs font-bold text-[#00194E]">Diferença acumulada</span>
-                      <span className="block text-lg font-extrabold text-[#01AEAA]">+ {`${formatBRL(diferencaCenarios)},00`}</span>
-                      <span className="block text-[10px] text-slate-500 leading-tight mt-1">Diferença no patrimônio estimado entre os cenários</span>
-                  </div>
+                      </div>
+
+                      <div className="bg-[#F0FDF8] rounded-2xl p-5 flex flex-col items-start">
+                        <div className="bg-[#CCFBF1] p-3 rounded-full flex-shrink-0 mb-4"><ArrowRightLeft className="w-5 h-5 text-[#01AEAA]" /></div>
+                          <span className="block text-xs font-bold text-[#00194E]">Diferença acumulada</span>
+                          <span className="block text-lg font-extrabold text-[#01AEAA]">+ {`${formatBRL(diferencaCenarios)},00`}</span>
+                          <span className="block text-[10px] text-slate-500 leading-tight mt-1">Diferença no patrimônio estimado entre os cenários</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

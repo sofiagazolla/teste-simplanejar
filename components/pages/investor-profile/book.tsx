@@ -5,7 +5,7 @@ import { FaPiggyBank } from "react-icons/fa";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const bookImage = "/book/book-investor.png";
+const bookImage = "/book/book-about.png";
 
 export default function Book() {
     return (

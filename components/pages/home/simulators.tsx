@@ -46,7 +46,7 @@ const data : simulatorsData = {
     {
         name: "AUTOCONHECIMENTO",
         title: "Índice de **Saúde Financeira**",
-        description: "Faça o Teste e descubra como está sua saúde financeira. Conte com o SIM PLANEJAR em sua jornada!",
+        description: "Faça o Teste e descubra como está sua saúde financeira. Conte com o SIM PLANEJAR em sua jornada",
         image: "/simulators/simulators-images/simulators2.png",
         alt: "",
         icon: "/simulators/simulators-icons/simulator2.png",
@@ -58,7 +58,7 @@ const data : simulatorsData = {
     {
         name: "PERFIL DE INVESTIDOR",
         title: "Perfil de **Investidor (Suitability)**",
-        description: "Conhecer seu perfil de investidor é fundamental para nortear suas decisões de investimentos. Faça o teste e descubra!",
+        description: "Conhecer seu perfil de investidor é fundamental para nortear suas decisões de investimentos. Faça o teste e descubra",
         image: "/simulators/simulators-images/simulators3.png",
         alt: "",
         icon: "/simulators/simulators-icons/simulator3.png",
@@ -132,7 +132,7 @@ export default function Simulators() {
                     <div className="grid grid-cols-2 gap-y-4 gap-x-4 sm:gap-x-8 xl:flex xl:flex-row xl:items-center">
                         {data.bottomItems.map((item, index) => (
                             <div className="flex flex-row items-center" key={index}>
-                                <div className="hidden xl:block w-0.5 h-[45px] bg-primary mx-6 xl:mx-8 shrink-0"/>
+                                <div className="hidden xl:block w-0.5 h-[45px] bg-primary mx-6 xl:mx-6 shrink-0"/>
                                 <div className="mr-3 ml-1 xl:ml-0 shrink-0">
                                     <img
                                         src={item.iconPath}

@@ -193,10 +193,18 @@ function ReviewCard({ review }: { review: Review }) {
                 </div>
 
                 <div className="flex items-center gap-1 text-primary">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                    <span className="font-nunito text-[10px] font-semibold">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-dark-blue opacity-75"/>
+                    <span className="font-nunito text-[10px] font-semibold text-dark-blue opacity-75">
                         Compra verificada
                     </span>
+                    <Image
+                        src="/book/amazon-logo.svg"
+                        alt=""
+                        width={16}
+                        height={16}
+                        className="h-5 w-5 shrink-0"
+                    />
+            
                 </div>
             </div>
         </div>
@@ -209,7 +217,7 @@ function AmazonReviews({ reviews, page, onPrev, onNext, onSelect }: AmazonReview
     const visibleReviews = reviews.slice(page * pageSize, page * pageSize + pageSize);
 
     return (
-        <div className="w-full lg:w-[300px] xl:w-[320px] lg:shrink-0 mx-auto lg:mx-0">
+        <div className="w-full lg:w-[300px] xl:w-[360px] lg:shrink-0 mx-auto lg:mx-0">
             <div className="rounded-[10px] bg-card-bg p-6 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
                 <div className="mb-4 flex items-start gap-2">
                     <MessageSquareQuote className="mt-1 h-5 w-5 shrink-0 text-primary" />
